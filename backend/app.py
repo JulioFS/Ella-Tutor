@@ -11,7 +11,7 @@ app = Flask(__name__)
 # allows overcoming of Cross Origin.
 CORS(app)
 # Location of our SQLITE DB
-DATABASE = '/home/julio/CodeRepo/Ella/backend/db/school.db'
+DATABASE = '/Users/julio/CodeRepo/Ella-Tutor/backend/db/school.db'
 
 
 def get_db():
@@ -125,7 +125,8 @@ def get_student_courses(student_id):
         s.name as student_name,
         s.email,
         sc.id as student_course_id,
-        c.course_id,
+        c.course_id as course_code,
+        c.id as course_id,
         c.name as course_name,
         c.course_time
         from
