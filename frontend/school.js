@@ -69,8 +69,9 @@ var School = (() => {
         queryAPI({ endPoint: `/students/courses/${STUDENT.id}`, method: 'GET' }).then((courses) => {
             if (courses) {
                 courses.forEach(element => {
+                    let ampmTime = prettyTime(element.course_time)
                     $('#selected-courses').append(
-                        `<tr><td>${element.course_code}</td><td>${element.course_name}</td><td>${element.course_time}</td><td><input type="button" value="Remove" onclick="School.handleCourse(this)" data-action-id="remove" data-course-id="${element.course_id}"></td></tr>`);
+                        `<tr><td>${element.course_code}</td><td>${element.course_name}</td><td>${ampmTime}</td><td><input type="button" value="Remove" onclick="School.handleCourse(this)" data-action-id="remove" data-course-id="${element.course_id}"></td></tr>`);
                     STUDENT.courses.push(element.course_id);
                 });
                 showCourses();
@@ -92,8 +93,9 @@ var School = (() => {
                     } else {
                         buttonState = '';
                     }
+                    let ampmTime = prettyTime(element.course_time);
                     $('#available-courses').append(
-                        `<tr><td>${element.course_id}</td><td>${element.name}</td><td>${element.course_time}</td><td><input type="button" value="Add" onclick="School.handleCourse(this)" data-action-id="add" data-course-id="${element.id}" ${buttonState}></td></tr>`);
+                        `<tr><td>${element.course_id}</td><td>${element.name}</td><td>${ampmTime}</td><td><input type="button" value="Add" onclick="School.handleCourse(this)" data-action-id="add" data-course-id="${element.id}" ${buttonState}></td></tr>`);
                 });
             } else {
                 alert('Courses Not Found. Please Try Again Later.');
@@ -113,8 +115,22 @@ var School = (() => {
         });
     };
 
+    let prettyTime = (minutes) => {
+        let ampm = '';
+        let min = Math.floor(Math.abs(minutes));
+        let sec = Math.floor((Math.abs(minutes) * 60) % 60);
+        if (min > 12) {
+            min = min - 12;
+            ampm = 'PM'
+        } else {
+            ampm = 'AM'
+        }
+        return (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec + ' ' + ampm;
+    };
+
     return {
         initialize: initialize,
-        handleCourse: handleCourse
+        handleCourse: handleCourse,
+        prettyTime: prettyTime
     };
 })();
