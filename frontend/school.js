@@ -71,7 +71,7 @@ var School = (() => {
                 courses.forEach(element => {
                     let ampmTime = prettyTime(element.course_time)
                     $('#selected-courses').append(
-                        `<tr><td>${element.course_code}</td><td>${element.course_name}</td><td>${ampmTime}</td><td><input type="button" value="Remove" onclick="School.handleCourse(this)" data-action-id="remove" data-course-id="${element.course_id}"></td></tr>`);
+                        `<tr><td>${element.course_code}</td><td>${element.course_name}</td><td>${ampmTime}</td><td><input type="button" class="btn btn-primary" value="Remove" onclick="School.handleCourse(this)" data-action-id="remove" data-course-id="${element.course_id}"></td></tr>`);
                     STUDENT.courses.push(element.course_id);
                 });
                 showCourses();
@@ -95,7 +95,7 @@ var School = (() => {
                     }
                     let ampmTime = prettyTime(element.course_time);
                     $('#available-courses').append(
-                        `<tr><td>${element.course_id}</td><td>${element.name}</td><td>${ampmTime}</td><td><input type="button" value="Add" onclick="School.handleCourse(this)" data-action-id="add" data-course-id="${element.id}" ${buttonState}></td></tr>`);
+                        `<tr><td>${element.course_id}</td><td>${element.name}</td><td>${ampmTime}</td><td><input type="button" class="btn btn-success" value="Add" onclick="School.handleCourse(this)" data-action-id="add" data-course-id="${element.id}" ${buttonState}></td></tr>`);
                 });
             } else {
                 alert('Courses Not Found. Please Try Again Later.');

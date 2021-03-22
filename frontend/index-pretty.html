@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <title>Welcome to School, Inc</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+    <h2 class="mt-4 mb-2">School, Inc.</h1>
+    <hr>
+
+    <div id="login">
+        <div class="card">
+            <h5 class="card-header">Login</h5>
+            <div class="card-body">
+              <h5 class="card-title">Student Code</h5>
+              <p class="card-text">Please enter your existing student code:</p>
+              <input type="text" id="student-code" value="">
+              <input type="button" id="submit-code" value="Verify" class="btn btn-primary">
+            </div>
+          </div>
+    </div>
+
+    <div id="success-login" style="display:none;" class="mb-4">
+        <div class="card">
+            <h5 class="card-header">Welcome, <span id="student-name"></span></h5>
+            <div class="card-body">
+                <input type="button" id="logout" value="Logout" class="btn btn-primary">
+            </div>
+          </div>
+    </div>
+
+    <div id="content" style="display:none">
+        <h4>Selected Courses</h4>
+        <table class="table table-success table-striped table-sm mb-4">
+            <thead>
+                <th>Course</th>
+                <th>Description</th>
+                <th>Time</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="selected-courses"></tbody>
+        </table>
+
+        <h4>Available Courses</h4>
+        <table class="table table-info table-striped table-sm">
+            <thead>
+                <th>Course</th>
+                <th>Description</th>
+                <th>Time</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="available-courses"></tbody>
+        </table>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script src="./school.js"></script>
+    <script>
+        /* Contains relevant and temporary info about the current student */
+        var STUDENT = {};
+        $(document).ready(School.initialize);
+    </script>
+</body>
+</html>
+
